@@ -7,6 +7,8 @@
             :title="luanch.name"
             :upcoming="luanch.upcoming"
             :success="luanch.success"
+            :time="luanch.date_utc"
+            :crew="luanch.crew.length"
           >
           </Card>
         </div>

@@ -42,11 +42,11 @@ export default {
     },
     time: {
       type: String,
-      required: false,
+      required: true,
     },
     crew: {
       type: Number,
-      required: false,
+      required: true,
     },
     // icon: {
     //   type: String,

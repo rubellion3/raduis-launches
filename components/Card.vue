@@ -1,14 +1,19 @@
 <template>
   <div class="column">
     <div class="card">
-      <header class="card-header">
-        <p class="card-header-title has-text-grey">
-          {{ title }}
-        </p>
-      </header>
       <div class="card-content">
-        <div class="content has-text-centered">
-          <b-icon :icon="icon" size="is-large" type="is-primary" />
+        <div class="level">
+          <div class="level-left">
+            {{ title }}
+          </div>
+          <div class="level-right">
+            <div v-if="crew" class="level-item tag is-link">
+              {{ crew + ' crew' }}
+            </div>
+            <div class="level-item" v-text="$moment(time).format('LLLL')"></div>
+            <div v-if="upcoming" class="level-item">Upciming</div>
+            <div v-if="success" class="level-item">Success</div>
+          </div>
         </div>
       </div>
       <footer class="card-footer">
@@ -29,10 +34,24 @@ export default {
       type: String,
       required: true,
     },
-    icon: {
-      type: String,
-      required: true,
+    upcoming: {
+      type: Boolean,
     },
+    success: {
+      type: Boolean,
+    },
+    time: {
+      type: String,
+      required: false,
+    },
+    crew: {
+      type: Number,
+      required: false,
+    },
+    // icon: {
+    //   type: String,
+    //   required: true,
+    // },
   },
 }
 </script>

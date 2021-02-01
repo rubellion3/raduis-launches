@@ -1,5 +1,5 @@
 <template>
-  <section v-if="isLoading" class="section">
+  <section v-if="launches" class="section">
     <b-tabs type="is-toggle" expanded>
       <b-tab-item label="All">
         <div v-for="luanch in launches" :key="luanch.id">
@@ -9,7 +9,9 @@
             :success="luanch.success"
             :time="luanch.date_utc"
             :crew="luanch.crew.length"
+            :icon="luanch.links.patch.small"
           >
+            {{ luanch.details }}
           </Card>
         </div>
       </b-tab-item>
@@ -22,7 +24,9 @@
             :success="luanch.success"
             :time="luanch.date_utc"
             :crew="luanch.crew.length"
+            :icon="luanch.links.patch.small"
           >
+            {{ luanch.details }}
           </Card>
         </div>
       </b-tab-item>
@@ -35,7 +39,8 @@
             :success="luanch.success"
             :time="luanch.date_utc"
             :crew="luanch.crew.length"
-          >
+            :icon="luanch.links.patch.small"
+            >{{ luanch.details }}
           </Card>
         </div>
       </b-tab-item>
@@ -52,8 +57,7 @@ export default {
   },
   data() {
     return {
-      isLoading: false,
-      launches: [],
+      launches: null,
     }
   },
   mounted() {
@@ -67,7 +71,6 @@ export default {
       if (res) {
         this.launches = res.data
       }
-      this.isLoading = true
     },
   },
 }

@@ -54,7 +54,6 @@ export default {
   name: 'HomePage',
   components: {
     Card,
-    test,
   },
   data() {
     return {
